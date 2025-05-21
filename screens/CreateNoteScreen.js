@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { View, TextInput, Button, Alert } from 'react-native';
 import { loadNotes, saveNotes } from '../storage/notesStorage';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -8,13 +8,25 @@ export default function CreateNoteScreen({ navigation }) {
   const [body, setBody] = useState('');
 
   const createNote = async () => {
-    if (!title.trim()) return;
+    console.log("Save button clicked");
+    
+    if (!title.trim()) {
+      Alert.alert("Missing Title", "Please enter a note title.");
+      return;
+    }
 
     const newNote = { id: uuidv4(), title, body };
     const existingNotes = await loadNotes();
     const updatedNotes = [newNote, ...existingNotes];
     await saveNotes(updatedNotes);
-    navigation.goBack();
+
+    // ✅ Show confirmation
+    Alert.alert("Note Saved", "Your note has been saved.", [
+      {
+        text: "OK",
+        onPress: () => navigation.goBack(), // ✅ Go back after OK
+      },
+    ]);
   };
 
   return (

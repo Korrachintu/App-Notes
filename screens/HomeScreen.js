@@ -38,7 +38,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, padding: 20 }}>
-      <Button title="Create Note" onPress={() => navigation.navigate('CreateNote')} />
+      <Button title="Create Not" onPress={() => navigation.navigate('CreateNote')} />
       <FlatList
         data={notes}
         keyExtractor={(item) => item.id}
