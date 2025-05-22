@@ -1,18 +1,26 @@
-import React from 'react';
+// App.js
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import HomeScreen from './screens/HomeScreen';
 import CreateNoteScreen from './screens/CreateNoteScreen';
 import NoteDetailScreen from './screens/NoteDetailScreen';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
+  const [notes, setNotes] = useState([]);  // In-memory only
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="CreateNote" component={CreateNoteScreen} />
+        <Stack.Screen name="Home">
+          {props => <HomeScreen {...props} notes={notes} setNotes={setNotes} />}
+        </Stack.Screen>
+        <Stack.Screen name="CreateNote">
+          {props => <CreateNoteScreen {...props} setNotes={setNotes} />}
+        </Stack.Screen>
         <Stack.Screen name="NoteDetail" component={NoteDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
