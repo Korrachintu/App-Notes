@@ -1,8 +1,5 @@
-// CreateNoteScreen.js
 import React, { useState } from 'react';
 import { View, TextInput, Button, Alert } from 'react-native';
-import uuid from 'react-native-uuid';
-
 
 export default function CreateNoteScreen({ navigation, setNotes }) {
   const [title, setTitle] = useState('');
@@ -14,7 +11,15 @@ export default function CreateNoteScreen({ navigation, setNotes }) {
       return;
     }
 
-    const newNote = { id: Date.now().toString(), title, body };
+    const timestamp = new Date().toLocaleString();
+    const newNote = {
+      id: Date.now().toString(),
+      title,
+      body,
+      createdAt: timestamp,
+      updatedAt: null,
+    };
+
     setNotes(prevNotes => [newNote, ...prevNotes]);
 
     Alert.alert('Note Saved', 'Your note has been saved.', [
