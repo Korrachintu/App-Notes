@@ -54,19 +54,19 @@ npx expo start
 ## 📸 Screenshots
 
 ### 🏠 Home Screen
-![Home Screen](screenshots/home.png)
+![Home Screen](assets/screenshots/home.png)
 
 ### 📝 Create Note Screen
-![Create Note Screen](screenshots/create%20a%20note.png)
+![Create Note Screen](assets/screenshots/create%20a%20note.png)
 
 ### ✏️ Update Note Button
-![Update Button](screenshots/update.png)
+![Update Button](assets/screenshots/update.png)
 
 ### 🛠️ Update/Edit Note Screen
-![Update Note Screen](screenshots/update%20screen.png)
+![Update Note Screen](assets/screenshots/update%20screen.png)
 
 ### 🔍 Search Notes
-![Search Screen](screenshots/search.png)
+![Search Screen](assets/screenshots/search.png)
 
 
 
